@@ -1,0 +1,25 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: "loans"
+  profiles:
+    active:
+      - "prod"
+  datasource:
+    username: root
+    password: 'root'
+    url: jdbc:mysql://localhost:3307/loansdb
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
